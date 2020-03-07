@@ -33,11 +33,9 @@ function fichas(val) {
             break;
 
     }
-
     function clickUp(val) {
         show(val)
-            turn()
-            validation()
+        validation()
     }
     function drawcolor(cor1, cor2,id){
         if (turnos == 1) {
@@ -48,7 +46,6 @@ function fichas(val) {
             tablero[cor1][cor2] = -3
         }
     }
-
     function calHeight(val){
         c1 = tablero[0][val-1]
         c2 = tablero[1][val-1]
@@ -59,44 +56,54 @@ function fichas(val) {
         alturaencontrada = false;
         let i = 0;
         let col = val - 1
-        while(i < 6){
+        while(i < 7){
             switch (i) {
                 case 0:
                     if (c1 == 0 && c2 !== 0) {
                         drawcolor(i,col,val)
                         alturaencontrada = true; 
-                                   
+                        turn() 
                      }
                     break;
                 case 1:
                     if (c1 === 0 && c2 === 0 && c3 !== 0) {
                         drawcolor(i,col,val)
                         alturaencontrada = true;
+                        turn()
                      }
                     break;
                 case 2:
                     if (c1 === 0 && c2 === 0 && c3 === 0 && c4 !== 0) {
                         drawcolor(i,col,val)
                         alturaencontrada = true;
+                        turn()
                      }
                         break;
                 case 3:
                     if (c1 === 0 && c2 === 0 && c3 === 0 && c4 === 0 && c5 !== 0) {
                         drawcolor(i,col,val)
                         alturaencontrada = true;
+                        turn()
                     }
                         break;
                 case 4:
                     if (c1 === 0 && c2 === 0 && c3 === 0 && c4 === 0 && c5 === 0 && c6 !== 0) {
                         drawcolor(i,col,val)
-                        alturaencontrada = true;  
+                        alturaencontrada = true; 
+                        turn() 
                     }  
                         break;
                 case 5:
                     if (c1 === 0 && c2 === 0 && c3 === 0 && c4 === 0 && c5 === 0 && c6 == 0) {
                         drawcolor(i,col,val)
                         alturaencontrada = true;
+                        turn()
                     }  
+                        break;
+                case 5:
+                        if(c1 !== 0){
+                            turn()
+                        }
                         break;
                 default:
                     break;
@@ -137,7 +144,6 @@ function fichas(val) {
             turnos = 1
         }
     }
-
     function ganador(){
         let name = '';
         turnos === 1 ? name = 'azul': name = 'rojo'
@@ -146,9 +152,6 @@ function fichas(val) {
     }
     function validation(){
         let suma = turnos === 1 ? -12 : 12
-        console.log(suma);
-        
-        
     //tablero
     c1 = tablero[0][0]; c21 = tablero[0][1]; c31 = tablero[0][2]; c41 = tablero[0][3]; c51 = tablero[0][4]; c61 = tablero[0][5]; c71 = tablero[0][6];
     c2 = tablero[1][0]; c22 = tablero[1][1]; c32 = tablero[1][2]; c42 = tablero[1][3]; c52 = tablero[1][4]; c62 = tablero[1][5]; c72 = tablero[1][6];
@@ -156,7 +159,6 @@ function fichas(val) {
     c4 = tablero[3][0]; c24 = tablero[3][1]; c34 = tablero[3][2]; c44 = tablero[3][3]; c54 = tablero[3][4]; c64 = tablero[3][5]; c74 = tablero[3][6];
     c5 = tablero[4][0]; c25 = tablero[4][1]; c35 = tablero[4][2]; c45 = tablero[4][3]; c55 = tablero[4][4]; c65 = tablero[4][5]; c75 = tablero[4][6];
     c6 = tablero[5][0]; c26 = tablero[5][1]; c36 = tablero[5][2]; c46 = tablero[5][3]; c56 = tablero[5][4]; c66 = tablero[5][5]; c76 = tablero[5][6];
-   
     d1 = c3 + c24 + c35 + c46; 
     d2 = c2 + c23 + c34 + c45; 
     d3 = c23 + c34 + c45 + c56; 
@@ -172,7 +174,6 @@ function fichas(val) {
     if(d1 == suma || d2 == suma || d3 == suma || d4 == suma || d5 == suma || d6== suma || d8== suma ||d9 ==suma|| d10 == suma || d11 == suma|| d12 == suma || d13 == suma ){
         ganador()
     }
-   
     // resultados horizontal
     h11 = c1 + c21 + c31 + c41; h21 = c2 + c22+ c32 + c42;h31 = c3 + c23+ c33 + c43;h41 = c4 + c24+ c34 + c44;h51 = c5 + c25+ c35 + c45;
     h12 = c21 + c31 + c41 + c51; h22 = c22 + c32 + c42 + c52;h32 = c23+ c33 + c43 +c53;h42 = c24+ c34 + c44 + c54;h52 = c25+ c35 + c45 + c55;
@@ -209,8 +210,6 @@ function fichas(val) {
     r52 = c52 + c53 + c54 + c55;  r62 = c62 + c63 + c64 + c65;  r72 = c72 + c73 + c74 + c75;
     r53 = c53 + c54 + c55 + c56;  r63 = c63 + c64 + c65 + c66;  r73 = c73 + c74 + c75 + c76;
         // Vertical
-        console.log(r11,r12,r13);
-        
         if( r11 == suma || r12 == suma || r13 == suma){
             console.log("entro");
             
