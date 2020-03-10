@@ -38,18 +38,42 @@
     width: 152px;
   }
 
-
-
+  html, body { 
+    height:100%; 
+    margin:0;
+    padding:0;
+  }
+  
+  .flex-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: DodgerBlue;
+    margin-bottom: 50px;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+  
+  
 
   /* coneta */
   .margin{
+    border: 0.5px solid gray;
     margin: auto;
     border-spacing: 17px;
     border-radius: 24px;
-    background-color: lightskyblue;
+    background-color: seashell;
   }
 
   td{
+    border: 0.5px solid gray;
     background-color: white;
     border-radius: 44px;
     width: 53px;
@@ -64,4 +88,8 @@
     height: 48px;
     background: white;
     border-radius: 0px;
+  }
+  .td:hover {
+    background-color: rgb(221, 220, 220);
+    box-shadow: 0px 0px 10px #666;
   }
