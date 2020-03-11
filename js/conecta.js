@@ -7,6 +7,8 @@ let tablero = [
     [0, 0, 0, 0, 0, 0, 0]
 ]
 let turnos = 1;
+let win;
+let cont = 1;
 let rojo = 0;
 let azul = 0;
 function fichas(val) {
@@ -36,15 +38,19 @@ function fichas(val) {
     function clickUp(val) {
         calHeight(val)
         validation()
+        empate()
     }
     function drawcolor(cor1, cor2,id){
         if (turnos == 1) {
             document.getElementById(id).style.background = '#f41215';
             tablero[cor1][cor2] = 3
+            cont++
         } else {
             document.getElementById(id).style.background = '#f8f32b';
             tablero[cor1][cor2] = -3
+            cont++
         }
+        console.log(cont)
     }
     function calHeight(val){
         c1 = tablero[0][val-1]
@@ -113,13 +119,18 @@ function fichas(val) {
         }
     }
     function ganador(){
-        let name = '';
-        
-        turnos === 1 ? name = 'Amarillo': name = 'rojo'
+        let name = ''; 
+        turnos === 1 || win === true? name = 'Amarillo': name = 'rojo'
         alert('El ganador es '+ name)
-        history.go('/')
-    
+        history.go('/') 
     }
+    function empate(){
+    if(cont == 43){
+        alert('Empate')
+        history.go('/')
+    }
+    
+}
     function validation(){
         let suma = turnos === 1 ? -12 : 12
     //tablero
@@ -154,9 +165,10 @@ function fichas(val) {
     d23= c41 + c32 + c23 + c4
     d24= c5 + c24 + c33 + c42 
     d25= c24 + c33 + c42 + c51
+    d26= c6 + c25 + c34 + c43
 
 
-    if(d25 == suma ||d24 == suma ||d23 == suma ||d22 == suma ||d21 == suma ||d20 == suma ||d19 == suma ||d18 == suma ||d17 == suma ||d14 == suma ||d15 == suma || d16 == suma || d1 == suma || d2 == suma || d3 == suma || d4 == suma || d5 == suma || d6== suma || d8== suma ||d9 ==suma|| d10 == suma || d11 == suma|| d12 == suma || d13 == suma ||d14 == suma  ){
+    if( d26 == suma ||d25 == suma ||d24 == suma ||d23 == suma ||d22 == suma ||d21 == suma ||d20 == suma ||d19 == suma ||d18 == suma ||d17 == suma ||d14 == suma ||d15 == suma || d16 == suma || d1 == suma || d2 == suma || d3 == suma || d4 == suma || d5 == suma || d6== suma || d8== suma ||d9 ==suma|| d10 == suma || d11 == suma|| d12 == suma || d13 == suma ||d14 == suma  ){
         ganador()
     }
     // resultados horizontal
